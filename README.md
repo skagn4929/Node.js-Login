@@ -38,7 +38,9 @@ Node.js 환경에서 간단한 Login 기능을 구현하는 과정을 정리한 
 ![](https://velog.velcdn.com/images/kitree/post/14be5c7a-0af7-4af7-ab93-20a11025f610/image.JPG)
 
 ## 5. 컨트롤러(Controller) 분리
-🎮 컨트롤러는 사용자 입력을 처리하고 모델 및 뷰 간의 상호 작용을 조정하는 역할을 한다. 컨트롤러에 해당하는 부분을 따로 분리하여 작업
+> 컨트롤러는 사용자 입력을 처리하고 모델 및 뷰 간의 상호 작용을 조정하는 역할을 한다.
+
+🎮 컨트롤러에 해당하는 부분을 따로 분리하여 작업
 
 ![](https://velog.velcdn.com/images/kitree/post/bc066220-9606-40c8-8c01-0fadb68426d7/image.JPG)
 
@@ -51,3 +53,15 @@ Node.js 환경에서 간단한 Login 기능을 구현하는 과정을 정리한 
 
 ![](https://velog.velcdn.com/images/kitree/post/95370ee1-fd61-4b7a-818c-4df6a56ab4ef/image.JPG)
 ![](https://velog.velcdn.com/images/kitree/post/14f3d1eb-d03d-422e-8df8-83497143d83f/image.JPG)
+
+## 7. 프런트를 위한 JS 만들기
+️📄 로그인 기능과 연결하는 자바스크립트 파일 생성, 미들웨어를 통해 정적 경로 설정
+
+![](https://velog.velcdn.com/images/kitree/post/4bb712fe-96ba-4b30-8b22-c745a159ff58/image.JPG)
+
+## 8. DOM으로 HTML 객체 제어하기
+> DOM은 문서 객체 모델로, 인터페이스를 통해 자바스크립트에서 HTML 데이터 제어 가능.
+
+️🧩 클라이언트에서 입력한 아이디와 비밀번호를 받아서 입력받은 값이 서버로 전송되며, 서버는 그러한 데이터를 받아서 로직을 처리한다.
+
+![](https://velog.velcdn.com/images/kitree/post/9d60e4d0-6163-406f-9f29-7d2ce294dbe1/image.JPG)
