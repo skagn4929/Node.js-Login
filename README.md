@@ -62,6 +62,88 @@ Node.js 환경에서 간단한 Login 기능을 구현하는 과정을 정리한 
 ## 8. DOM으로 HTML 객체 제어하기
 > DOM은 문서 객체 모델로, 인터페이스를 통해 자바스크립트에서 HTML 데이터 제어 가능.
 
-️🧩 클라이언트에서 입력한 아이디와 비밀번호를 받아서 입력받은 값이 서버로 전송되며, 서버는 그러한 데이터를 받아서 로직을 처리한다.
+️🧩️ 자바스크립트를 사용하여 웹 요소 가져오기 및 기능 구현
 
 ![](https://velog.velcdn.com/images/kitree/post/9d60e4d0-6163-406f-9f29-7d2ce294dbe1/image.JPG)
+
+## 9. 프런트에서 서버로 데이터 보내기
+📨 fetch를 이용하여 클라이언트에서 입력한 아이디와 비밀번호 값을 서버에게 전달. 클라이언트는 입력된 정보를 객체로 만들고, fetch를 통해 "/login" 엔드포인트로 POST 요청을 보낸다. 이때 요청은 JSON 형식으로 전송된다.
+
+![](https://velog.velcdn.com/images/kitree/post/a5620f4f-ca1a-4123-8d84-8f86f30becf9/image.JPG)
+ 
+## 10. 로그인 API 만들기 in 서버
+💾 클라이언트는 "/login" 엔드포인트로 POST 요청을 보내고, 서버는 해당 요청을 처리하여 요청된 데이터를 파싱합니다.
+
+- app/src/routes/home/index.js 파일에서는 Express의 라우터를 설정한다. "/login" 엔드포인트로의 GET 요청은 ctrl.output.login 함수를 호출하고, POST 요청은 ctrl.process.login 함수를 호출한다.
+
+```jsx
+// app/src/routes/home/index.js
+"use strict";
+
+const express = require("express");
+const router = express.Router();
+
+const ctrl = require("./home.ctrl");
+
+router.get("/", ctrl.output.hello);
+router.get("/login", ctrl.output.login);
+router.post("/login", ctrl.process.login);
+
+module.exports = router;
+```
+
+- app/src/routes/home/home.ctrl.js 파일에서는 요청에 대한 응답을 처리하는 컨트롤러 함수들을 정의한다. output 객체에는 홈 페이지와 로그인 페이지를 렌더링하는 함수가 있고, process 객체에는 로그인 요청을 처리하는 함수가 있다.
+
+```jsx
+// app/src/routes/home/home.ctrl.js
+"use strict";
+
+const output = {
+  hello: (req, res) => {
+    res.render("home/index");
+  },
+
+  login: (req, res) => {
+    res.render("home/login");
+  },
+};
+
+const process = {
+  login: (req,res) => {
+    console.log(req.body);
+  },
+};
+
+module.exports = {
+  output,
+  process
+};
+```
+
+- 요청 데이터를 파싱하기 위해 body-parser 미들웨어를 설정. body-parser는 JSON 형식의 요청 본문을 파싱하여 JavaScript 객체로 변환한다.
+
+```jsx
+//  /app/app.js
+"use strict";
+
+// 모듈
+const express = require("express");
+const bodyParser = require("body-parser");
+const app = express();
+
+// 라우팅
+const home = require("./src/routes/home");
+
+// 앱 세팅
+app.set("views", "./src/views");
+app.set("view engine", "ejs");
+app.use(express.static(`${__dirname}/src/public`));
+
+app.use(bodyParser.json());
+// URL을 통해 전달되는 데이터에 한글, 공백 등과 같은 문자가 포함될 경우 제대로 인식되지 않는 문제 해결
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use("/", home); // use -> 미들 웨어를 등록해주는 메서드.
+
+module.exports = app;
+```
