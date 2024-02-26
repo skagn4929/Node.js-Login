@@ -29,3 +29,11 @@ Node.js 환경에서 간단한 Login 기능을 구현해 보았습니다.
 
 ![](https://velog.velcdn.com/images/kitree/post/70e6afd5-bd7f-4ba7-8198-e2936501a829/image.JPG)
 
+## 4. 라우팅 분리
+️🔄 라우트 폴더를 생성하고, 그 안에 미들웨어를 담을 디렉토리를 생성
+
+![](https://velog.velcdn.com/images/kitree/post/c36983a0-9fbf-41d7-89d4-6cc6c14b0180/image.JPG)
+
+️📡 use 메서드를 사용하여 미들웨어를 등록
+
+![](https://velog.velcdn.com/images/kitree/post/14be5c7a-0af7-4af7-ab93-20a11025f610/image.JPG)
