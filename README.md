@@ -12,7 +12,6 @@ Node.js 환경에서 간단한 Login 기능을 구현하는 과정을 정리한 
 ![3](https://velog.velcdn.com/images/kitree/post/2f72d811-0d19-4f0f-b257-fde6952353b4/image.JPG)
 ![4](https://velog.velcdn.com/images/kitree/post/1277eb8f-9232-4d6f-927b-2adfea21042a/image.JPG)
 
----
 ## 2. 로그인 화면 만들기
 ✏️ 로그인 화면을 하드코딩하여 구현
 
@@ -21,7 +20,7 @@ Node.js 환경에서 간단한 Login 기능을 구현하는 과정을 정리한 
 ![](https://velog.velcdn.com/images/kitree/post/2c71755c-ceda-4630-b97a-f6896a2057a4/image.JPG)
 
 ## 3. 로그인 뷰(view) 최적화
-️📝 ejs 모듈을 받고 index.ejs와 login.ejs 파일을 만들어 분류 
+️📝 ejs 모듈을 받고 index.ejs와 login.ejs 파일을 만들어 분류
 
 ![](https://velog.velcdn.com/images/kitree/post/6529790e-9b16-4502-9e32-86208f67cfd8/image.JPG)
 
@@ -47,3 +46,8 @@ Node.js 환경에서 간단한 Login 기능을 구현하는 과정을 정리한 
 
 ![](https://velog.velcdn.com/images/kitree/post/ea168379-68da-426d-90a7-ce30c2fdc5ef/image.JPG)
 
+## 6. app.listen() 모듈화
+💻 서버를 띄워주는 app.listen() 부분을 따로 분리하여 연결 작업
+
+![](https://velog.velcdn.com/images/kitree/post/95370ee1-fd61-4b7a-818c-4df6a56ab4ef/image.JPG)
+![](https://velog.velcdn.com/images/kitree/post/14f3d1eb-d03d-422e-8df8-83497143d83f/image.JPG)
