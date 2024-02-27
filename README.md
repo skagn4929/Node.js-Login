@@ -1,8 +1,8 @@
 # Node.js-Login
 Node.js 환경에서 간단한 Login 기능을 구현하는 과정을 정리한 내용입니다.
 
-## 1. Express로 서버 띄워보기
-️🌐 Express를 사용해서 웹 서버를 띄우고, 클라이언트의 요청 경로로 이동하는 라우팅 기능까지 구현
+## 1. Express로 서버 띄우기
+️🌐 Express를 사용해서 웹 서버를 띄우고, 클라이언트의 요청 경로로 이동하는 라우팅 기능 구현
 
 ![1](https://velog.velcdn.com/images/kitree/post/9f7852c1-4b87-46a6-b403-ce1fe426eee2/image.JPG)
 
@@ -24,7 +24,7 @@ Node.js 환경에서 간단한 Login 기능을 구현하는 과정을 정리한 
 
 ![](https://velog.velcdn.com/images/kitree/post/6529790e-9b16-4502-9e32-86208f67cfd8/image.JPG)
 
-💻 하드코딩에서 뷰 엔진으로 코드 최적화 작업
+🔎 하드코딩에서 뷰 엔진으로 코드 최적화 작업
 
 ![](https://velog.velcdn.com/images/kitree/post/70e6afd5-bd7f-4ba7-8198-e2936501a829/image.JPG)
 
@@ -55,7 +55,7 @@ Node.js 환경에서 간단한 Login 기능을 구현하는 과정을 정리한 
 ![](https://velog.velcdn.com/images/kitree/post/14f3d1eb-d03d-422e-8df8-83497143d83f/image.JPG)
 
 ## 7. 프런트를 위한 JS 만들기
-️📄 로그인 기능과 연결하는 자바스크립트 파일 생성, 미들웨어를 통해 정적 경로 설정
+️📄 로그인 기능과 연결하는 자바스크립트 파일 생성 및 미들웨어를 통해 정적 경로 설정
 
 ![](https://velog.velcdn.com/images/kitree/post/4bb712fe-96ba-4b30-8b22-c745a159ff58/image.JPG)
 
@@ -228,3 +228,38 @@ module.exports = {
   process,
 };
 ```
+## 12. 서버의 응답데이터 처리 in 프런트
+🔛 서버는 클라이언트의 요청을 받아 로그인 처리를 한다. 로그인이 성공하면 res.json({ success: true })와 같이 성공 여부를 담은 JSON 응답을 보내고 클라이언트는 이 응답 데이터를 받아서 처리한다. 또한, 클라이언트는 서버로부터 받은 응답 데이터를 처리하는 과정에서 발생할 수 있는 에러를 잡아서 콘솔에 출력하고, 사용자에게는 간단한 알림을 통해 로그인 중 에러가 발생했음을 알려준다.
+
+- 성공한 경우: 응답 데이터에 success 속성이 true로 설정되어 있으면, 페이지를 리다이렉트하여 홈 화면으로 이동한다.
+- 실패한 경우: 응답 데이터에 success 속성이 false로 설정되어 있으면, 사용자에게 알림창을 띄워 로그인에 실패했음을 알려준다.
+
+![](https://velog.velcdn.com/images/kitree/post/e04f5322-f127-40ef-aee7-b49b474dc7df/image.JPG)
+
+## 13. MVC의 모델(M) 만들기
+👨‍👩‍👧‍👦 UserStorage 모델을 만들고 그 안에 정적 변수 #user로 사용자 정보를 저장하고 관리한다. 또한, getUser 메서드를 이용해 필요한 필드(id, psword)를 받아서 해당 필드에 해당하는 사용자 정보를 반환한다.
+
+![](https://velog.velcdn.com/images/kitree/post/554e5866-5d72-45cd-89a9-e8ccbb65114d/image.JPG)
+
+👨‍ UserStorage.getUsers() 메서드를 사용하여 해당 아이디와 비밀번호에 대한 사용자 정보를 가져온다. 이후, 가져온 사용자 정보를 바탕으로 로그인 성공 여부를 판단하고, 성공 여부에 따라 응답 데이터를 생성하여 클라이언트에게 전달한다.
+
+![](https://velog.velcdn.com/images/kitree/post/36bab856-2a83-4684-90b7-e7da912e7602/image.JPG)
+
+## 14. User 모델 만들기(인스턴스화)
+🙆 User 모델을 만들고 생성자를 통해 클라이언트로부터 받은 요청 데이터를 받아온다. login 메서드는 받아온 요청 데이터를 기반으로 UserStorage.getUserInfo() 메서드를 사용하여 사용자 정보를 조회하고, 로그인 여부를 판단하여 응답 데이터를 생성한다.
+
+![](https://velog.velcdn.com/images/kitree/post/938e20b4-0edc-4552-8c2f-64cecf776b04/image.JPG)
+
+
+🙋 UserStroage 모델에 특정 사용자 정보를 가져오는 getUserInfo 메서드를 정의한다.
+
+![](https://velog.velcdn.com/images/kitree/post/12f13818-ed1f-435c-bd30-db24ac0d5b59/image.JPG)
+
+📌 컨트롤러에서 User 모델 사용. 로그인 요청이 들어오면 해당 요청을 처리하기 위해 User 모델을 인스턴스화하고, login 메서드를 호출하여 로그인 기능을 수행한다.
+
+![](https://velog.velcdn.com/images/kitree/post/e238a2b9-769c-496a-a075-221bfc9c8f82/image.JPG)
+
+## 16. 오픈소스 이용하기
+✨ 프런트 UI를 꾸미기 위해 오픈소스의 하나인 [codepen](https://codepen.io/)을 이용하여 마음에 드는 로그인 화면을 선택하고 이에 맞는 HTML, CSS 소스를 가져와서 적용시킨다.
+
+![](https://velog.velcdn.com/images/kitree/post/75f9ac33-c8ef-4575-ab0c-c04321c943f7/image.png)
