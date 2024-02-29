@@ -260,6 +260,11 @@ module.exports = {
 ![](https://velog.velcdn.com/images/kitree/post/e238a2b9-769c-496a-a075-221bfc9c8f82/image.JPG)
 
 ## 16. 오픈소스 이용하기
-✨ 프런트 UI를 꾸미기 위해 오픈소스의 하나인 [codepen](https://codepen.io/)을 이용하여 마음에 드는 로그인 화면을 선택하고 이에 맞는 HTML, CSS 소스를 가져와서 적용시킨다.
+✨ 프런트 UI를 꾸미기 위해 오픈소스의 하나인 CodePen을 이용하여 마음에 드는 로그인 화면을 선택하고 이에 맞는 HTML, CSS 소스를 가져와서 적용시킨다.
 
 ![](https://velog.velcdn.com/images/kitree/post/75f9ac33-c8ef-4575-ab0c-c04321c943f7/image.png)
+
+---
+### 참고
+- [CodePen](https://codepen.io/)
+- [Video Tutorial](https://www.youtube.com/playlist?list=PLSK4WsJ8JS4cQ-niGNum4bkK_THHOizTs)
